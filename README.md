@@ -1,103 +1,77 @@
-<img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
+# Appam Roundness Analyzer 🍳
 
+A joke-serious React + Vite app that "analyzes" a photo of an appam and
+reports its Roundness %, Symmetry %, visible hole count, visual thickness,
+Shape Grade, a funny AI comment, and a
+(scientifically fixed) 100% Uselessness Score.
 
+It's real client-side image processing — grayscale conversion, Otsu
+thresholding, connected-component detection, and centroid-based
+symmetry checks, all on `<canvas>` — just pointed at a completely
+frivolous goal. No backend, no ML model, no data leaves your browser.
 
-# [Project Name] 🎯
+## Setup
 
+You need [Node.js](https://nodejs.org) 18+ installed.
 
-## Basic Details
-### Team Name: [Name]
+```bash
+# 1. Install dependencies
+npm install
 
+# 2. Start the dev server
+npm run dev
+```
 
-### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+Then open the URL Vite prints (usually `http://localhost:5173`).
 
-### Project Description
-[2-3 lines about what your project does]
+## Using it
 
-### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+1. Click/tap the round dropzone, or drag a photo onto it.
+2. Best results: a top-down photo of the appam on a plate/surface that
+   contrasts with it (e.g. a light appam on a dark plate, or vice versa).
+3. Wait ~half a second for the "analysis" to complete.
+4. Admire your Roundness %, Symmetry %, hole count, visual thickness, Shape Grade, and the AI's
+   completely unnecessary commentary.
+5. Hit "Analyze Another Appam 🍳" to reset and try again.
 
-### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+## How the "analysis" actually works
 
-## Technical Details
-### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+1. The uploaded image is drawn to an off-screen canvas and downscaled.
+2. It's converted to grayscale, then split into foreground/background
+   using [Otsu's method](https://en.wikipedia.org/wiki/Otsu%27s_method)
+   (an automatic thresholding algorithm).
+3. A flood-fill keeps only the largest connected blob (assumed to be
+   the appam), ignoring small specks.
+4. **Roundness** compares the blob's bounding-box fill ratio and aspect
+   ratio against what a perfect circle would produce.
+5. **Symmetry** mirrors the shape across its centroid on both axes and
+   measures how much it overlaps itself.
+6. Shape Grade, the funny comment, and the Uselessness Score are just
+   thresholds and a joke-line lookup table — no AI model is called.
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+Hole count is based on enclosed background regions in the detected appam blob.
+Visual thickness is an image-relative estimate in pixels; physical thickness
+requires a known scale or a side-on photo.
 
-### Implementation
-For Software:
-# Installation
-[commands]
+## Project structure
 
-# Run
-[commands]
+```
+appam-analyzer/
+├── index.html
+├── package.json
+├── vite.config.js
+└── src/
+    ├── main.jsx          # entry point
+    ├── App.jsx           # UI: upload flow + results card
+    ├── App.css           # theming
+    └── analyzeAppam.js   # the "vision" pipeline
+```
 
-### Project Documentation
-For Software:
+## Build for production
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+```bash
+npm run build
+npm run preview   # serve the production build locally
+```
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
-
----
-Made with ❤️ at TinkerHub Useless Projects 
-
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
-
-
-
+Enjoy judging your appams. No appams were harmed — only lovingly roasted. 🥥
