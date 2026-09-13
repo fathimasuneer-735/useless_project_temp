@@ -1,77 +1,89 @@
-# Appam Roundness Analyzer 🍳
+<img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
-A joke-serious React + Vite app that "analyzes" a photo of an appam and
-reports its Roundness %, Symmetry %, visible hole count, visual thickness,
-Shape Grade, a funny AI comment, and a
-(scientifically fixed) 100% Uselessness Score.
 
-It's real client-side image processing — grayscale conversion, Otsu
-thresholding, connected-component detection, and centroid-based
-symmetry checks, all on `<canvas>` — just pointed at a completely
-frivolous goal. No backend, no ML model, no data leaves your browser.
 
-## Setup
+Appam Roundness Analyser
 
-You need [Node.js](https://nodejs.org) 18+ installed.
+### Team Name:NoLogic
 
-```bash
-# 1. Install dependencies
+### Team Members
+Fathima Suneer
+Aysha Shifa C S
+
+
+Project Description
+
+Appam Roundness Analyser is a completely unnecessary application that analyses an appam and determines how perfectly round it is. Upload an appam photo and receive a scientifically questionable Roundness Score™, along with a brutally honest verdict.
+
+The Problem (that doesn't exist)
+
+People have been eating appam for years without knowing exactly how round their appam is.
+
+This creates a serious and completely imaginary crisis:
+“Is my appam actually round?” 🤔🥞
+
+The Solution (that nobody asked for)
+
+We built an advanced, highly unnecessary appam-analysis system that examines the shape of an appam and calculates its roundness percentage.
+
+The system then provides a completely useless verdict such as:
+
+- 🏆 95–100%: Perfect Appam
+- 😌 80–94%: Pretty Round
+- 🤨 60–79%: Something went wrong
+- 💀 Below 60%: Bro... that's not an appam anymore.
+
+Technical Details
+
+Technologies/Components Used
+
+For Software:
+
+- Language: JavaScript
+- Framework: React
+- Libraries: HTML, CSS, JavaScript image-processing libraries
+- Tools: VS Code, Git, GitHub, Web Browser
+
+For Hardware:
+
+- No hardware required.
+- A laptop/desktop and a camera or phone are enough to capture an appam.
+
+Implementation
+
+For Software:
+
+Installation
+
+git clone <repository-link>
+cd appam-roundness-analyser
 npm install
 
-# 2. Start the dev server
+Run
+
 npm run dev
-```
 
-Then open the URL Vite prints (usually `http://localhost:5173`).
+Open the displayed localhost URL in your browser.
 
-## Using it
 
-1. Click/tap the round dropzone, or drag a photo onto it.
-2. Best results: a top-down photo of the appam on a plate/surface that
-   contrasts with it (e.g. a light appam on a dark plate, or vice versa).
-3. Wait ~half a second for the "analysis" to complete.
-4. Admire your Roundness %, Symmetry %, hole count, visual thickness, Shape Grade, and the AI's
-   completely unnecessary commentary.
-5. Hit "Analyze Another Appam 🍳" to reset and try again.
 
-## How the "analysis" actually works
+Diagrams
 
-1. The uploaded image is drawn to an off-screen canvas and downscaled.
-2. It's converted to grayscale, then split into foreground/background
-   using [Otsu's method](https://en.wikipedia.org/wiki/Otsu%27s_method)
-   (an automatic thresholding algorithm).
-3. A flood-fill keeps only the largest connected blob (assumed to be
-   the appam), ignoring small specks.
-4. **Roundness** compares the blob's bounding-box fill ratio and aspect
-   ratio against what a perfect circle would produce.
-5. **Symmetry** mirrors the shape across its centroid on both axes and
-   measures how much it overlaps itself.
-6. Shape Grade, the funny comment, and the Uselessness Score are just
-   thresholds and a joke-line lookup table — no AI model is called.
+"Workflow" (workflow.png)
 
-Hole count is based on enclosed background regions in the detected appam blob.
-Visual thickness is an image-relative estimate in pixels; physical thickness
-requires a known scale or a side-on photo.
+Workflow of the Appam Roundness Analyser: Upload Image → Detect Appam → Analyse Shape → Calculate Roundness → Generate Useless Verdict.
 
-## Project structure
 
-```
-appam-analyzer/
-├── index.html
-├── package.json
-├── vite.config.js
-└── src/
-    ├── main.jsx          # entry point
-    ├── App.jsx           # UI: upload flow + results card
-    ├── App.css           # theming
-    └── analyzeAppam.js   # the "vision" pipeline
-```
+Team Contributions
+Fathima Suneer
+Aysha Shifa C S 
 
-## Build for production
+---
 
-```bash
-npm run build
-npm run preview   # serve the production build locally
-```
+Made with ❤️ at TinkerHub Useless Projects
 
-Enjoy judging your appams. No appams were harmed — only lovingly roasted. 🥥
+![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
+
+
+
